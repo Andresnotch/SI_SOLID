@@ -1,6 +1,6 @@
 from producto import Producto
 class Cuenta():
-    def __init__(self,productos: [],total:float):
+    def __init__(self,productos: list,total:float):
         self.productos = productos
         self.total = total
     
@@ -11,14 +11,14 @@ class Cuenta():
     def pagar(self) -> None:
         print("El total a pagar es: "+self.total)
     
-    def agregarProducto(producto: Producto,cantidad:int):
+    def agregarProducto(self,producto: Producto,cantidad:int):
         if(cantidad == 1):
-            print("producto"+producto+"agregado")
+            print("producto"+str(self.producto)+"agregado")
         else:
             print(cantidad+" productos " + producto+" agregados")
     
-    def quitarProducto(producto: Producto,cantidad:int):
+    def quitarProducto(self,producto: Producto,cantidad:int):
         if(cantidad == 1):
-            print("producto "+producto+" eliminado")
+            print("producto "+str(self.producto)+" eliminado")
         else:
             print(cantidad+" productos " + producto+" eliminados")
