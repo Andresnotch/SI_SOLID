@@ -1,14 +1,15 @@
+from producto import Producto
 class Cuenta():
     def __init__(self,productos: [],total:float):
         self.productos = productos
         self.total = total
     
-    def dividirCuenta(personas:int):
-        cuentaDividida = total/personas
+    def dividirCuenta(self,personas:int) -> None:
+        cuentaDividida = self.total/personas
         print("Cada persona pagará "+cuentaDividida+" pesos")
     
-    def pagar():
-        print("El total a pagar es: "+total)
+    def pagar(self) -> None:
+        print("El total a pagar es: "+self.total)
     
     def agregarProducto(producto: Producto,cantidad:int):
         if(cantidad == 1):
