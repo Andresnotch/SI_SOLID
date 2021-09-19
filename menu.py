@@ -1,3 +1,4 @@
+from producto import Producto
 class Menu():
     def __init__(self):
         nombreRestaurante: str
