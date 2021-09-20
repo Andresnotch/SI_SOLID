@@ -1,31 +1,39 @@
+from menu import Menu
+from persona import Cliente
+
+
 class Mesa:
-    def __init__(self, numMesa:int, cantidadPersona:int, listaCliente:int) -> None:
-        self.numMesa = numMesa
-        self.cantidadPersona = cantidadPersona
-        self.listaCliente = []
+	def __init__(self, numMesa: int, cantidadPersona: int) -> None:
+		"""
+		Class Mesa
+		:param numMesa:
+		:param cantidadPersona:
+		"""
+		self.numMesa: int = numMesa
+		self.cantidadPersona: int = cantidadPersona
+		self.cliente: Cliente or None = None
+
+	def agregarCliente(self, cliente: Cliente) -> bool:
+		if not self.cliente:
+			self.cliente = cliente
+			print("Cliente agregado")
+		else:
+			print("Aún existe un cliente en esta mesa")
+			return False
 
 class Restaurante:
-    def __init__(self, nombre:str, direccion:str, mesa:Mesa) -> None:
-        self.nombre = nombre
-        self.direccion = direccion
-        self.mesa = mesa #ASOCIACION -> AGREGACION
+	def __init__(self, nombre: str, direccion: str, menu: Menu, mesas: [Mesa]) -> None:
+		self.nombre = nombre
+		self.direccion = direccion
+		self.menu: Menu = menu
+		self.mesas: [Mesa] = mesas
 
-    def abirir(self) -> bool:
-        print('restaurante abierto')
-        #pass
+	def abrir(self) -> bool:
+		print('restaurante abierto')
+		return True
 
-    def cerrar(self) -> bool:
-        print('restaurante cerrado')
-        #pass
-
-###
-mesa1 = Mesa(1, 2, 3)
-
-soft = Restaurante('Soft', 'La Minerva #123', mesa1)
-print('El nombre del restaurante es:', soft.nombre)
-print('La direccion del restaurante es:', soft.direccion)
-print('El numero de mesa atendida es:', mesa1.numMesa)
-print('Cantidad de personas en la mesa atendida es:', mesa1.cantidadPersona)
-#print('Lista de personas en la mesa atendida es:', mesa1.listaCliente)
-soft.abirir()
-soft.cerrar()
+	def cerrar(self) -> bool:
+		for m in self.mesas:
+			m.cliente = None
+		print('restaurante cerrado')
+		return True
