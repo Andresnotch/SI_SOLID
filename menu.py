@@ -5,7 +5,7 @@ class Menu():
         listaProductos: list
     
     def agregarProducto(self,producto: Producto):
-        print("producto"+str(self.producto)+"agregado")
+        print("producto"+str(producto)+"agregado")
     
     def quitarProducto(self,producto: Producto):
-        print("producto "+str(self.producto)+" eliminado")
+        print("producto "+str(producto)+" eliminado")
