@@ -2,10 +2,10 @@ from producto import Producto
 class Menu():
     def __init__(self):
         nombreRestaurante: str
-        listaProductos: [str]
+        listaProductos: list
     
-    def agregarProducto(producto: Producto):
-        print("producto"+producto+"agregado")
+    def agregarProducto(self,producto: Producto):
+        print("producto"+str(self.producto)+"agregado")
     
-    def quitarProducto(producto: Producto):
-        print("producto "+producto+" eliminado")
+    def quitarProducto(self,producto: Producto):
+        print("producto "+str(self.producto)+" eliminado")
