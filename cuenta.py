@@ -6,19 +6,19 @@ class Cuenta():
     
     def dividirCuenta(self,personas:int) -> None:
         cuentaDividida = self.total/personas
-        print("Cada persona pagará "+cuentaDividida+" pesos")
+        print("Cada persona pagará "+str(cuentaDividida)+" pesos")
     
     def pagar(self) -> None:
-        print("El total a pagar es: "+self.total)
+        print("El total a pagar es: "+str(self.total))
     
     def agregarProducto(self,producto: Producto,cantidad:int):
         if(cantidad == 1):
-            print("producto"+str(self.producto)+"agregado")
+            print("producto"+str(producto)+"agregado")
         else:
-            print(cantidad+" productos " + producto+" agregados")
+            print(cantidad+" productos " + str(producto)+" agregados")
     
     def quitarProducto(self,producto: Producto,cantidad:int):
         if(cantidad == 1):
-            print("producto "+str(self.producto)+" eliminado")
+            print("producto "+str(producto)+" eliminado")
         else:
-            print(cantidad+" productos " + producto+" eliminados")
+            print(cantidad+" productos " +str(producto)+" eliminados")
