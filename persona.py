@@ -1,10 +1,8 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC
 from datetime import datetime as dt
 
 from cuenta import Cuenta
-from menu import Menu
-from producto import Producto
-from restaurante_mesa import Mesa, Restaurante
+import restaurante as resto
 from copy import deepcopy
 
 
@@ -22,18 +20,18 @@ class Cliente(Persona):
 
 
 class Mesero(Persona):
-	def __init__(self,nombre: str, edad: int, rfc: str, direccion: str, fecha_nacimiento: dt, restaurante: Restaurante):
+	def __init__(self, nombre: str, edad: int, rfc: str, direccion: str, fecha_nacimiento: dt, restaurante: resto.Restaurante):
 		super().__init__(nombre, edad)
 		self.rfc: str = rfc
 		self.direccion: str = direccion
 		self.fecha_nacimiento: dt = fecha_nacimiento
-		self.restaurante: Restaurante = restaurante
+		self.restaurante: resto.Restaurante = restaurante
 
-	def abrirCuenta(self, mesa: Mesa, cliente: Cliente) -> bool:
-		if mesa.cliente:
+	def abrirCuenta(self, m: resto.Mesa, cliente: Cliente) -> bool:
+		if m.cliente:
 			print("Esta mesa tiene una cuenta abierta")
 			return False
-		mesa.cliente = cliente
+		m.cliente = cliente
 		cliente.cuenta = self.tomarOrden()
 		return True
 
@@ -42,15 +40,17 @@ class Mesero(Persona):
 		entrada = ''
 		while entrada is not 'EXIT':
 			entrada = input('Ingresa el nombre del producto a agregar: ')
-			if entrada in self.restaurante.menu:
+			if entrada in self.restaurante.menu.productos:
 				cuenta.agregarProducto(deepcopy(self.restaurante.menu.productos[entrada]))
 				print("Producto agregado")
+			elif entrada == 'EXIT':
+				break
 			else:
 				print("El producto no existe")
 		return cuenta
 
-	def cobrarCuenta(self, mesa: Mesa) -> bool:
-		if mesa.cliente and mesa.cliente.cuenta:
-			mesa.cliente.cuenta.pagar()
+	def cobrarCuenta(self, m: resto.Mesa) -> bool:
+		if m.cliente and m.cliente.cuenta:
+			m.cliente.cuenta.pagar()
 		return True
 

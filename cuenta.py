@@ -16,7 +16,7 @@ class Cuenta:
 	def agregarProducto(self, producto: Producto):
 		self.productos.append(producto)
 		self.total += producto.precio
-		print("producto" + str(producto) + "agregado")
+		print("producto " + str(producto) + " agregado")
 
 	def quitarProducto(self, producto: Producto):
 		if producto in self.productos:
