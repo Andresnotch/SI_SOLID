@@ -39,7 +39,7 @@ class Mesero(Persona):
 		cuenta = Cuenta([], 0)
 		entrada = ''
 		while entrada is not 'EXIT':
-			entrada = input('Ingresa el nombre del producto a agregar: ')
+			entrada = input('Ingresa el name del producto a add_node: ')
 			if entrada in self.restaurante.menu.productos:
 				cuenta.agregarProducto(deepcopy(self.restaurante.menu.productos[entrada]))
 				print("Producto agregado")
